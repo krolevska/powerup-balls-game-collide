@@ -19,12 +19,14 @@ public class PlayerController : MonoBehaviour
     private Coroutine powerupCountdown; // Reference for the powerup duration countdown
 
     // Smash powerup variables
-    public float hangTime = 0.5f;  
-    public float smashSpeed = 5.0f;  
-    public float explosionForce = 10.0f;  
-    public float explosionRadius = 10.0f; 
+    public float hangTime = 0.5f;
+    public float smashSpeed = 5.0f;
+    public float explosionForce = 10.0f;
+    public float explosionRadius = 10.0f;
     bool smashing = false; // Flag to check if the smash action is ongoing
     float floorY; // Y-position of the floor (or starting y-position)
+
+    public int lives = 5; // Player begins with lives
 
     void Start()
     {
@@ -53,8 +55,20 @@ public class PlayerController : MonoBehaviour
             smashing = true;
             StartCoroutine(Smash());
         }
-    }
 
+        if (transform.position.y < 0f && lives > 1)
+        {
+            ResetPlayerPosition();
+        }
+    }
+    void ResetPlayerPosition()
+    {
+        lives--;
+        transform.position = new Vector3(0, 0, 0);
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+
+    }
     // Coroutine to disable powerup after a duration
     IEnumerator PowerupCountdownRoutine()
     {
@@ -82,6 +96,7 @@ public class PlayerController : MonoBehaviour
             StopCoroutine(powerupCountdown);
         }
         powerupCountdown = StartCoroutine(PowerupCountdownRoutine());
+
     }
 
     // Collision logic with the enemy
@@ -139,4 +154,6 @@ public class PlayerController : MonoBehaviour
             smashing = false; // End the smash action
         }
     }
+
+
 }

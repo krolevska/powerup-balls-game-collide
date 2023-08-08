@@ -50,7 +50,7 @@ public class SpawnManager : MonoBehaviour
         enemyCount = FindObjectsOfType<Enemy>().Length;
 
         // If all enemies have been defeated
-        if (enemyCount == 0)
+        if (enemyCount == 0 && player.GetComponent<PlayerController>().lives > 1)
         {
             waveNumber++;
 
