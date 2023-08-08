@@ -551,9 +551,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5769fa1f14a8834c82b4ab9134f9cef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 10
   hasPowerup: 0
   powerIndicator: {fileID: 8298644091521577415}
+  currentPowerUp: 0
+  rocketPrefab: {fileID: 6598575723393990697, guid: ba3e9c7d70bd3414aac0e6c38530eef2, type: 3}
+  hangTime: 0.5
+  smashSpeed: 5
+  explosionForce: 10
+  explosionRadius: 10
 --- !u!1001 &1403545340
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -671,10 +677,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bee2f23c555e87448fd0857b48baca0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 6570393150545414459, guid: 03ec3289a9c89c645a8568d0bcf7d24d, type: 3}
-  powerupPrefab: {fileID: 331295105533289058, guid: dac07c8f4390e7847a9fef3f52fbdbec, type: 3}
+  enemyPrefab:
+  - {fileID: 6570393150545414459, guid: 03ec3289a9c89c645a8568d0bcf7d24d, type: 3}
+  - {fileID: 6570393150545414459, guid: 54866a4b0e54e9b429f8c54a79995e8c, type: 3}
+  powerupPrefab:
+  - {fileID: 331295105533289058, guid: dac07c8f4390e7847a9fef3f52fbdbec, type: 3}
+  - {fileID: 3275341872635576964, guid: edf2b7fec60d57041ae7d8283c74047f, type: 3}
+  - {fileID: 331295105533289058, guid: b8d5988a1c3679642bea9b72b2aaa215, type: 3}
   waveNumber: 1
   enemyCount: 0
+  fireCount: 0
+  player: {fileID: 1374484585}
+  bossPrefab: {fileID: 6570393150545414459, guid: 5d6d3323255658f42a10e99d5b2cffe0, type: 3}
+  miniEnemyPrefabs:
+  - {fileID: 201361589893003732, guid: c453d67d2b3509940b2c3455766e0a0d, type: 3}
+  - {fileID: 8852356110612921746, guid: bd00b7ae99f77e347b5ffc358c0325db, type: 3}
+  bossRound: 4
 --- !u!4 &1449603841
 Transform:
   m_ObjectHideFlags: 0
@@ -688,7 +706,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3456392286732542871
 PrefabInstance:
@@ -699,7 +717,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6689160000560048188, guid: 387717556ee8e864a970a4bf8ea90409, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6689160000560048188, guid: 387717556ee8e864a970a4bf8ea90409, type: 3}
       propertyPath: m_LocalPosition.x
